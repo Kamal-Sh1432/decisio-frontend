@@ -5,25 +5,62 @@ import { useNavigate } from "react-router-dom";
 function Upload() {
   const [file, setFile] = useState(null);
   const [question, setQuestion] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    if (!file || !question) {
-      alert("Please upload a file and enter a business question.");
-      return;
+  if (!file || !question) {
+    alert("Please upload a file and enter a business question.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("question", question);
+
+  const API_BASE = import.meta.env.VITE_API_URL;
+
+  const uploadWithRetry = async (retries = 2) => {
+    try {
+      return await axios.post(`${API_BASE}/upload`, formData);
+    } catch (error) {
+      if (retries > 0) {
+        console.log("Retrying upload...");
+        await new Promise(res => setTimeout(res, 3000));
+        return uploadWithRetry(retries - 1);
+      }
+      throw error;
     }
+  };
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("question", question);
+   try {
+      setLoading(true);   // 👈 ADD THIS LINE HERE
 
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/upload`,
-      formData
-    );
+       // Wake backend
+       await fetch(`${API_BASE}/docs`);
+
+        const response = await uploadWithRetry();
+
+         navigate(`/result/${response.data.analysis_id}`);
+         } catch (error) {
+          console.error("Upload failed:", error);
+          alert("Server is waking up. Please try again.");
+         } finally {
+          setLoading(false);  // 👈 ADD THIS LINE HERE
+  }
+
+  try {
+    // Wake backend
+    await fetch(`${API_BASE}/docs`);
+
+    const response = await uploadWithRetry();
 
     navigate(`/result/${response.data.analysis_id}`);
-  };
+  } catch (error) {
+    console.error("Upload failed:", error);
+    alert("Server is waking up. Please try again.");
+  }
+ };
 
   return (
     <div className="page-wrapper">
