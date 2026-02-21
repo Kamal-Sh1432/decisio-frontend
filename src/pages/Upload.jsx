@@ -93,9 +93,15 @@ function Upload() {
           />
         </div>
 
-        <button onClick={handleSubmit}>
-          RUN EXECUTIVE ANALYSIS
-        </button>
+        <button onClick={handleSubmit} disabled={loading}>
+  {loading ? (
+    <span className="loading-text">
+      Analyzing data<span className="dots"></span>
+    </span>
+  ) : (
+    "RUN EXECUTIVE ANALYSIS"
+  )}
+</button>
 
       </div>
 
