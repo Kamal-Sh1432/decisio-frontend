@@ -1,16 +1,158 @@
-# React + Vite
+# Deciso – Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Deciso is a decision-support platform designed to transform analytics into structured, actionable insights.
 
-Currently, two official plugins are available:
+This frontend application delivers an interactive, performance-optimized user interface built using React + Vite, enabling real-time dashboards, AI-driven insights, and executive-level decision views.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Tech Stack
 
-## React Compiler
+React 18 – UI library
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Vite – Fast build tool & development server
 
-## Expanding the ESLint configuration
+React Router – Client-side routing
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Axios / Fetch API – Backend integration
+
+ESLint – Code quality enforcement
+
+Environment-based configuration
+
+🏗 Project Structure
+frontend/
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+│   ├── services/
+│   ├── hooks/
+│   ├── utils/
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── .env
+├── vite.config.js
+└── package.json
+⚙️ Getting Started
+1️⃣ Install Dependencies
+npm install
+2️⃣ Run Development Server
+npm run dev
+
+The application will start on:
+
+http://localhost:5173
+
+Hot Module Replacement (HMR) is enabled for instant UI updates during development.
+
+🏭 Build for Production
+npm run build
+
+This generates an optimized production build inside the dist/ folder.
+
+To preview the production build locally:
+
+npm run preview
+🔐 Environment Configuration
+
+Create a .env file in the root of the frontend directory:
+
+VITE_API_BASE_URL=http://localhost:5000
+
+All environment variables must be prefixed with VITE_ to be accessible in the application.
+
+🧠 Key Frontend Features
+
+Executive dashboard views
+
+KPI visualizations
+
+Predictive insights integration
+
+Risk segmentation views
+
+Action-trigger based UI components
+
+Modular component architecture
+
+Clean separation between UI and service layers
+
+🔄 Backend Integration
+
+The frontend communicates with the Deciso backend via REST APIs.
+
+All API calls are centralized inside:
+
+src/services/
+
+This ensures:
+
+Reusable service logic
+
+Clean separation of concerns
+
+Easier scaling and maintenance
+
+🧩 ESLint & Code Quality
+
+ESLint is configured to enforce:
+
+Consistent coding standards
+
+React hooks best practices
+
+Clean imports and structure
+
+To run lint checks:
+
+npm run lint
+🛠 React + Vite Configuration
+
+This project uses Vite for fast builds and development speed.
+
+Available React plugins:
+
+@vitejs/plugin-react (Babel-based Fast Refresh)
+
+@vitejs/plugin-react-swc (SWC-based Fast Refresh for improved speed)
+
+The React Compiler is not enabled due to performance considerations during development and production builds.
+
+📈 Scalability Considerations
+
+The frontend architecture is designed to support:
+
+Role-based dashboards
+
+Multi-tenant environments
+
+Advanced analytics modules
+
+AI-driven insight layers
+
+Enterprise-level authentication flows
+
+🧪 Recommended Production Enhancements
+
+For production-grade deployment:
+
+Add TypeScript for type safety
+
+Enable type-aware ESLint rules
+
+Integrate centralized error logging
+
+Implement environment-based API routing
+
+Add performance monitoring
+
+👨‍💻 Author
+
+Kamal Sharma
+Senior Business Analyst | Analytics Consultant
+
+Deciso reflects practical experience in delivering decision-support systems that combine analytics, visualization, and predictive intelligence.
